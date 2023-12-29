@@ -1,0 +1,30 @@
+{
+    "registered": "2019-10-12T02:00:22 -03:00",
+    "latitude": -43.270076,
+    "longitude": 48.5465,
+    "tags": [
+      "eiusmod",
+      "Lorem",
+      "nostrud",
+      "ea",
+      "fugiat",
+      "in",
+      "id"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Estrada Armstrong"
+      },
+      {
+        "id": 1,
+        "name": "Stout Gibson"
+      },
+      {
+        "id": 2,
+        "name": "Lily Dodson"
+      }
+    ],
+    "greeting": "Hello, Cora Bernard! You have 6 unread messages.",
+    "favoriteFruit": "apple"
+  }
