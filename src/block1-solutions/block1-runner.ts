@@ -1,4 +1,4 @@
-import {task1, task2, task3, task4, task5, BufferTask, DateTask, throwJson} from "./block1-tasks";
+import {task1, task2, task3, task4, task5, BufferTask, DateTask, throwJson, Timer} from "./block1-tasks";
 import {TCallbackFunction} from "../utils";
 
 // блок управляет тасками, и таски друг на друга не влияют
@@ -54,6 +54,11 @@ export function Block1Runner(callback: TCallbackFunction) {
     }
     function task8Wrapper() {
         throwJson(() => {
+            task9Wrapper();
+        });
+    }
+    function task9Wrapper() {
+        Timer(() => {
             callback();
         });
     }

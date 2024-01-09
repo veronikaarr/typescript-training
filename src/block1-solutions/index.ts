@@ -6,4 +6,4 @@ export {task5Solution} from "./tasks5";
 export {task6a, task6b, task6c} from "./tasks6";
 export {task7a, task7b, task7c} from "./tasks7";
 export {task8} from "./tasks8";
-export {task9a, task9b} from "./tasks9"
+export {task9a, task9b, task9c} from "./tasks9"

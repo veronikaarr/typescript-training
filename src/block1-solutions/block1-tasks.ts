@@ -2,7 +2,7 @@ import { resolve } from "path";
 
 import {
     task1Solution, checkAndReturnLastChar, task3Solution, task4Solution, task5Solution,
-    task6a, task6b, task6c, task7a, task7b, task7c, task8, task9a, task9b
+    task6a, task6b, task6c, task7a, task7b, task7c, task8, task9a, task9b, task9c
 } from "./index";
 import {getArray, TCallbackFunction} from "../utils";
 
@@ -15,56 +15,56 @@ export function task1(callback: TCallbackFunction) {
     function example1(){
         // number
         task1Solution(5, (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example2();
         });
     }
     function example2(){
         // string
         task1Solution("test", (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example3();
         });
     }
     function example3(){
         // boolean
         task1Solution(true, (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example4();
         });
     }
     function example4(){
         // object
         task1Solution({"k": "v", "k1": "v1"}, (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example5();
         });
     }
     function example5(){
         // array
         task1Solution([1, 2, 5], (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example6();
         });
     }
     function example6(){
         // null
         task1Solution(null, (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example7();
         });
     }
     function example7(){
         // NaN
         task1Solution(NaN, (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}`);
             example8();
         });
     }
     function example8(){
         // undefined
         task1Solution(undefined, (error?: Error, result?: any)=> {
-            console.log(result);
+            console.log(`Результат задачи task1: ${error ?? result}\n`);
             callback();
         });
     }
@@ -114,7 +114,6 @@ export function task2(callback: TCallbackFunction) {
 }
 
 export function task3(callback: TCallbackFunction){
-    let s = 1;
     const array = getArray();
     let maxElement = Math.max(...array);
     console.log(`Ожидаемый maxElement: ${maxElement}`);
@@ -326,16 +325,43 @@ export function throwJson(callback: TCallbackFunction) {
 
 
 export function Timer(callback: TCallbackFunction) {
+    console.log("\n-----Задача task9 Timer-----")
     example1();
     function example1(){
-        task9a(10, "Строка после таймаута", (error?: Error, result?: any)=> {
+        // 1000 мс = 1 с
+        task9a(1000, "Значение после таймаута", (error?: Error, result?: any)=> {
             console.log(`Результат задачи 9a: ${error ?? result}`);
             example2();
         });
     }
     function example2(){
+        console.log("Старт задачи task9b");
         task9b("msg", 1000, 5, (error?: Error, result?: any)=> {
             console.log(`Результат задачи 9b: ${error ?? result}`);
+            example3();
+        });
+    }
+    function example3(){
+        console.log("Старт задачи task9v");
+        const filePath = `${twoLevelsUp}/input_data/task7.txt`;
+        task9c(filePath, 1000, (error?: Error, result?: any)=> {
+            console.log(`Результат задачи 9v: ${error ?? result}`);
+            example4();
+        });
+    }
+    function example4(){
+        console.log("Старт задачи task9g");
+        const filePath = `${twoLevelsUp}/input_data/task9g.txt`;
+        task9c(filePath, 1, (error?: Error, result?: any)=> {
+            console.log(`Результат задачи 9g: ${error ?? result}`);
+            example5();
+        });
+    }
+    function example5(){
+        console.log("Старт задачи task9g");
+        const filePath = `${twoLevelsUp}/input_data`;
+        task9c(filePath, 1000, (error?: Error, result?: any)=> {
+            console.log(`Результат задачи 9 (error): ${error ?? result}`);
             callback();
         });
     }
