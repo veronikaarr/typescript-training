@@ -2,7 +2,8 @@ import { resolve } from "path";
 
 import {
     task1Solution, checkAndReturnLastChar, task3Solution, task4Solution, task5Solution,
-    task6a, task6b, task6c, task7a, task7b, task7c, task8, task9a, task9b, task9c
+    task6a, task6b, task6c, task7a, task7b, task7c, task8, task9a, task9b, task9c, delayedTimer, delayedRegexp,
+    task11a, calculator
 } from "./index";
 import {getArray, TCallbackFunction} from "../utils";
 
@@ -267,6 +268,7 @@ export function BufferTask(callback: TCallbackFunction) {
     const path1 = `${twoLevelsUp}/input_data/task7.txt`
     const path2 = `${twoLevelsUp}/input_data/task7b.txt`
 
+    console.log("\n-----Задача task7 BufferTask-----");
     task7aWrapper();
     function task7aWrapper(){
         task7a(path1, (error?: Error, result?: any)=> {
@@ -282,7 +284,6 @@ export function BufferTask(callback: TCallbackFunction) {
     }
     function task7cWrapper(){
         task7c(path1, (error?: Error, result?: any)=> {
-            console.log("-----Задача task7c-----");
             console.log(error ?? result);
             callback();
         });
@@ -296,6 +297,7 @@ export function throwJson(callback: TCallbackFunction) {
     const emptyJsonPath = `${twoLevelsUp}/input_data/task8/empty.json`
     const emptyObjectPath = `${twoLevelsUp}/input_data/task8/empty-object.json`
 
+    console.log("\n-----Задача task8 throwJson-----");
     example1();
     function example1(){
         task8(validJsonPath, (error?: Error, result?: any)=> {
@@ -362,6 +364,59 @@ export function Timer(callback: TCallbackFunction) {
         const filePath = `${twoLevelsUp}/input_data`;
         task9c(filePath, 1000, (error?: Error, result?: any)=> {
             console.log(`Результат задачи 9 (error): ${error ?? result}`);
+            callback();
+        });
+    }
+}
+
+export function higherOrderFunctions(callback: TCallbackFunction) {
+    console.log("\n-----Задача task10 higherOrderFunctions-----");
+    example1();
+
+    function example1() {
+        const timeoutFunc = delayedTimer(1);
+        timeoutFunc("Результат после таймера", (error?: Error, result?: any) => {
+            console.log(`Результат задачи delayedTimer: ${error ?? result}`);
+            example2();
+        });
+    }
+    function example2() {
+        const regexpFunc = delayedRegexp(/^[a-zA-Z0-9 ]{6,12}$/);
+        const s = "String123 ";
+        regexpFunc(s, (error?: Error, result?: any) => {
+            console.log(`Результат валидации строки: ${s}: ${error ?? result}`);
+            example3();
+        });
+    }
+    function example3() {
+        const regexpFunc = delayedRegexp(/^[a-zA-Z0-9 ]{6,12}$/);
+        const s = "Too long string";
+            regexpFunc("Too long string", (error?: Error, result?: any) => {
+            console.log(`Результат валидации строки: ${s}: ${error ?? result}`);
+            callback();
+        });
+    }
+}
+
+export function evalTasks(callback: TCallbackFunction) {
+    console.log("\n-----Задача task11 Eval-----");
+    example1();
+
+    function example1(){
+        task11a("1 + 2", (error?: Error, result?: any)=> {
+            console.log(`Результат задачи 11a: ${error ?? result}`);
+            example2();
+        });
+    }
+    function example2(){
+        task11a("1 + ",(error?: Error, result?: any)=> {
+            console.log(`Результат задачи 11a (2): ${error ?? result}`);
+            example3();
+        });
+    }
+    function example3(){
+        calculator("2 * (1 + 2)",(error?: Error, result?: any)=> {
+            console.log(`Результат задачи calculator: ${error ?? result}`);
             callback();
         });
     }
